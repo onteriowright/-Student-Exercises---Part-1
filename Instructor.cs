@@ -8,13 +8,21 @@ namespace StudentExercises
     public string FirstName { get; set; }
     public string LastName { get; set; }
     public string SlackHandle { get; set; }
-    public int TeacherCohort { get; set; }
+    public string TeacherCohort { get; set; }
     public string Speciality { get; set; }
-    public List<Exercises> TeacherAssignExercises = new List<Exercises>();
 
-    public void AssignAssignment(Exercises assignment)
+    public void AssignAssignment(Student student, Exercises assignment)
     {
-      TeacherAssignExercises.Add(assignment);
+      student.CurrentExercises.Add(assignment);
+    }
+
+    public Instructors(string firstName, string lastName, string slackHandle, string teacherChort, string speciality)
+    {
+      FirstName = firstName;
+      LastName = lastName;
+      SlackHandle = slackHandle;
+      TeacherCohort = teacherChort;
+      Speciality = speciality;
     }
   }
 }

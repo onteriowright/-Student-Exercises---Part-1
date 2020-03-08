@@ -5,21 +5,33 @@ namespace StudentExercises
 {
   public class Cohort
   {
-    public int DayCohort { get; set; }
-    public int EveningCohort { get; set; }
-    public List<Student> ListOfStudents = new List<Student>();
-    public List<Instructors> ListOfInstructors = new List<Instructors>();
-
-    public Cohort(int dayCohort, int eveningCohort)
+    public string CohortName { get; set; }
+    public List<Student> ListOfStudents { get; set; } = new List<Student>();
+    public List<Instructors> ListOfInstructors { get; set; } = new List<Instructors>();
+    public List<Cohort> ListOfCohorts { get; set; } = new List<Cohort>();
+    public void addCohort(Cohort cohort)
     {
-      DayCohort = dayCohort;
-      EveningCohort = eveningCohort;
+      ListOfCohorts.Add(cohort);
     }
-
+    public Cohort(string cohort)
+    {
+      CohortName = cohort;
+    }
+    public void addStudents(Student student)
+    {
+      ListOfStudents.Add(student);
+    }
+    public void addInstructor(Instructors instructor)
+    {
+      ListOfInstructors.Add(instructor);
+    }
     public void PrintCohorts()
     {
-      Console.WriteLine($"Please welcome Day Cohort {DayCohort} and Evening Cohort {EveningCohort}!");
-      Console.WriteLine("========================================================================");
+      foreach (Cohort cohorts in ListOfCohorts)
+      {
+        Console.WriteLine($"Please welcome Day Cohort {cohorts.CohortName}");
+        Console.WriteLine();
+      }
     }
   }
 }
